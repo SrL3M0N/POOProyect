@@ -76,7 +76,7 @@ public class v1 extends JFrame implements ActionListener {
 		}
 		{
 			lblNewLabel_1 = new JLabel("Nombre:");
-			lblNewLabel_1.setBounds(225, 10, 44, 12);
+			lblNewLabel_1.setBounds(191, 10, 44, 12);
 			contentPane.add(lblNewLabel_1);
 		}
 		{
@@ -86,7 +86,7 @@ public class v1 extends JFrame implements ActionListener {
 		}
 		{
 			lblNewLabel_3 = new JLabel("Stock:");
-			lblNewLabel_3.setBounds(225, 48, 44, 12);
+			lblNewLabel_3.setBounds(191, 48, 44, 12);
 			contentPane.add(lblNewLabel_3);
 		}
 		{
@@ -103,15 +103,36 @@ public class v1 extends JFrame implements ActionListener {
 		}
 		{
 			txtNomb = new JTextField();
-			txtNomb.setBounds(285, 7, 96, 18);
+			txtNomb.setBounds(245, 7, 96, 18);
 			contentPane.add(txtNomb);
 			txtNomb.setColumns(10);
 		}
 		{
 			txtStock = new JTextField();
-			txtStock.setBounds(285, 45, 96, 18);
+			txtStock.setBounds(245, 45, 96, 18);
 			contentPane.add(txtStock);
 			txtStock.setColumns(10);
+		}
+		
+		JButton bt_limpiar = new JButton("Limpiar");
+		bt_limpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtStock.setText("");
+				txtNomb.setText("");
+				txtPrecio.setText("");
+				txtcod.setText("");
+			}
+		});
+		bt_limpiar.setBounds(351, 26, 75, 20);
+		contentPane.add(bt_limpiar);
+		{
+			bt_eliminar = new JButton("Eliminar");
+			bt_eliminar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			bt_eliminar.setBounds(201, 94, 84, 20);
+			contentPane.add(bt_eliminar);
 		}
 		Listado();
 	}
@@ -121,6 +142,7 @@ public class v1 extends JFrame implements ActionListener {
 		}
 	}
 	ArregloProducto ap = new ArregloProducto();
+	private JButton bt_eliminar;
 	
 	//Reportar
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
