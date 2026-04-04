@@ -1,0 +1,30 @@
+package arreglo;
+
+import java.util.ArrayList;
+
+import clase.Producto;
+
+
+public class ArregloProducto {
+	
+	private ArrayList<Producto> product;
+	
+	public ArregloProducto() {
+		product = new ArrayList<Producto>();
+		Adicionar(new Producto(1020, "Ventilador", 50.00, 10));
+	}
+	
+	public void Adicionar(Producto x) {
+		product.add(x);
+	}
+	
+	public int Tamaño() {
+		return product.size();
+	}
+	
+	public Producto Obtener(int x) {
+		return product.get(x);
+	}
+	
+
+}
