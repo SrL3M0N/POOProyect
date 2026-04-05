@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class v1 extends JFrame implements ActionListener {
@@ -53,7 +54,7 @@ public class v1 extends JFrame implements ActionListener {
 	 */
 	public v1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 484, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -134,17 +135,56 @@ public class v1 extends JFrame implements ActionListener {
 			bt_eliminar.setBounds(201, 94, 84, 20);
 			contentPane.add(bt_eliminar);
 		}
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Producto p = new Producto(LeerCodigo(),LeerNombre(),LeerPrecio(),LeerStock());
+				ap.Adicionar(p);		
+			}
+		});
+		btnAdicionar.setBounds(114, 94, 84, 20);
+		contentPane.add(btnAdicionar);
+		
+		//Botón buscar:
+		JButton btnNewButton_1 = new JButton("Buscar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtS.setText("");		
+				Producto pr= ap.Buscar(Integer.parseInt(txtcod.getText()));
+				if(pr!=null) {
+				Imprimir("Código\tNombre\tPrecio\tStock");
+				Imprimir(pr.getCodigo()+"\t"+pr.getNombre()+"\t"+pr.getPrecio()+"\t"+pr.getStock());
+				
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"No existe código");
+				}
+			}
+		});
+		btnNewButton_1.setBounds(288, 94, 84, 20);
+		contentPane.add(btnNewButton_1);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(this);
+		btnModificar.setBounds(374, 93, 84, 20);
+		contentPane.add(btnModificar);
 		Listado();
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnModificar) {
+			do_btnModificar_actionPerformed(e);
+		}
 		if (e.getSource() == btnNewButton) {
 			do_btnNewButton_actionPerformed(e);
 		}
 	}
 	ArregloProducto ap = new ArregloProducto();
 	private JButton bt_eliminar;
+	private JButton btnModificar;
 	
-	//Reportar
+	//Boton de Reportar Producto
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText("");
 		Listado();
@@ -154,6 +194,7 @@ public class v1 extends JFrame implements ActionListener {
 		txtS.append(s+"\n");
 	}
 	
+	//Listar Producto
 	void Listado() {
 		Imprimir("Código\tNombre\tPrecio\tStock");
 		for (int i = 0; i < ap.Tamaño(); i++) {
@@ -161,4 +202,32 @@ public class v1 extends JFrame implements ActionListener {
 			+"\t"+ap.Obtener(i).getPrecio()+"\t"+ap.Obtener(i).getStock());
 		}
 	}
-}
+	
+		void  Mensaje(String s) {
+			JOptionPane.showMessageDialog(this, s);
+		}
+	//Convertidor 
+		int LeerCodigo() {
+			return Integer.parseInt(txtcod.getText());		
+		}
+		String LeerNombre() {
+			return txtNomb.getText();
+		}
+		double LeerPrecio() {
+			return Double.parseDouble(txtPrecio.getText());
+		}
+		int LeerStock() {
+			return Integer.parseInt(txtStock.getText());		
+		}
+		
+	//Modificar	
+		
+	protected void do_btnModificar_actionPerformed(ActionEvent e) {
+		Producto p=ap.Buscar(LeerCodigo());
+		if(p!=null) {
+			p.setNombre(LeerNombre());
+			p.setPrecio(LeerPrecio());
+			p.setStock(LeerStock());
+		}else Mensaje ("El código no existe");
+	}
+} 
