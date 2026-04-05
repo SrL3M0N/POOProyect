@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class v1 extends JFrame implements ActionListener {
@@ -145,6 +146,24 @@ public class v1 extends JFrame implements ActionListener {
 		});
 		btnAdicionar.setBounds(114, 94, 84, 20);
 		contentPane.add(btnAdicionar);
+		
+		JButton btnNewButton_1 = new JButton("Buscar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtS.setText("");		
+				Producto pr= ap.Buscar(Integer.parseInt(txtcod.getText()));
+				if(pr!=null) {
+				Imprimir("Código\tNombre\tPrecio\tStock");
+				Imprimir(pr.getCodigo()+"\t"+pr.getNombre()+"\t"+pr.getPrecio()+"\t"+pr.getStock());
+				
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"No existe código");
+				}
+			}
+		});
+		btnNewButton_1.setBounds(301, 94, 84, 20);
+		contentPane.add(btnNewButton_1);
 		Listado();
 	}
 	public void actionPerformed(ActionEvent e) {
