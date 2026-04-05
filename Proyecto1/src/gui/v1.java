@@ -134,6 +134,17 @@ public class v1 extends JFrame implements ActionListener {
 			bt_eliminar.setBounds(201, 94, 84, 20);
 			contentPane.add(bt_eliminar);
 		}
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Producto p = new Producto(LeerCodigo(),LeerNombre(),LeerPrecio(),LeerStock());
+				ap.Adicionar(p);		
+			}
+		});
+		btnAdicionar.setBounds(114, 94, 84, 20);
+		contentPane.add(btnAdicionar);
 		Listado();
 	}
 	public void actionPerformed(ActionEvent e) {
@@ -161,4 +172,18 @@ public class v1 extends JFrame implements ActionListener {
 			+"\t"+ap.Obtener(i).getPrecio()+"\t"+ap.Obtener(i).getStock());
 		}
 	}
+	
+	//Convertidor 
+		int LeerCodigo() {
+			return Integer.parseInt(txtcod.getText());		
+		}
+		String LeerNombre() {
+			return txtNomb.getText();
+		}
+		double LeerPrecio() {
+			return Double.parseDouble(txtPrecio.getText());
+		}
+		int LeerStock() {
+			return Integer.parseInt(txtStock.getText());		
+		}
 }
