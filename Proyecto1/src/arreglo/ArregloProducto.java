@@ -13,7 +13,7 @@ public class ArregloProducto {
 		product = new ArrayList<Producto>();
 		Adicionar(new Producto(1020, "Ventilador", 50.00, 10));
 	}
-	
+	// Metodo adicionar
 	public void Adicionar(Producto x) {
 		product.add(x);
 	}
