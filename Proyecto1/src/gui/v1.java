@@ -54,7 +54,7 @@ public class v1 extends JFrame implements ActionListener {
 	 */
 	public v1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 484, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -162,17 +162,26 @@ public class v1 extends JFrame implements ActionListener {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(301, 94, 84, 20);
+		btnNewButton_1.setBounds(288, 94, 84, 20);
 		contentPane.add(btnNewButton_1);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(this);
+		btnModificar.setBounds(374, 93, 84, 20);
+		contentPane.add(btnModificar);
 		Listado();
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnModificar) {
+			do_btnModificar_actionPerformed(e);
+		}
 		if (e.getSource() == btnNewButton) {
 			do_btnNewButton_actionPerformed(e);
 		}
 	}
 	ArregloProducto ap = new ArregloProducto();
 	private JButton bt_eliminar;
+	private JButton btnModificar;
 	
 	//Reportar
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
@@ -192,6 +201,9 @@ public class v1 extends JFrame implements ActionListener {
 		}
 	}
 	
+		void  Mensaje(String s) {
+			JOptionPane.showMessageDialog(this, s);
+		}
 	//Convertidor 
 		int LeerCodigo() {
 			return Integer.parseInt(txtcod.getText());		
@@ -205,4 +217,15 @@ public class v1 extends JFrame implements ActionListener {
 		int LeerStock() {
 			return Integer.parseInt(txtStock.getText());		
 		}
+		
+	//Modificar	
+		
+	protected void do_btnModificar_actionPerformed(ActionEvent e) {
+		Producto p=ap.Buscar(LeerCodigo());
+		if(p!=null) {
+			p.setNombre(LeerNombre());
+			p.setPrecio(LeerPrecio());
+			p.setStock(LeerStock());
+		}else Mensaje ("El código no existe");
+	}
 }
