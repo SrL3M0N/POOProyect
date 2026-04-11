@@ -183,7 +183,7 @@ public class v1 extends JFrame implements ActionListener {
 	private JButton bt_eliminar;
 	private JButton btnModificar;
 	
-	//Reportar
+	//Boton de Reportar Producto
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		txtS.setText("");
 		Listado();
@@ -193,6 +193,7 @@ public class v1 extends JFrame implements ActionListener {
 		txtS.append(s+"\n");
 	}
 	
+	//Listar Producto
 	void Listado() {
 		Imprimir("Código\tNombre\tPrecio\tStock");
 		for (int i = 0; i < ap.Tamaño(); i++) {
@@ -228,4 +229,4 @@ public class v1 extends JFrame implements ActionListener {
 			p.setStock(LeerStock());
 		}else Mensaje ("El código no existe");
 	}
-}
+} 

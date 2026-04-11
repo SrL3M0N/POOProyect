@@ -9,13 +9,14 @@ public class ArregloProducto {
 	
 	private ArrayList<Producto> product;
 	
+	//Metodo Constructor ArregloProducto 
 	public ArregloProducto() {
 		product = new ArrayList<Producto>();
 		Adicionar(new Producto(1020, "Ventilador", 50.00, 10));
 	}
 	
 	public void Adicionar(Producto x) {
-		product.add(x);
+		product.add(x); 
 	}
 	
 	public int Tamaño() {
