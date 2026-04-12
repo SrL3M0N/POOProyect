@@ -147,6 +147,7 @@ public class v1 extends JFrame implements ActionListener {
 		btnAdicionar.setBounds(114, 94, 84, 20);
 		contentPane.add(btnAdicionar);
 		
+		//Botón buscar:
 		JButton btnNewButton_1 = new JButton("Buscar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
