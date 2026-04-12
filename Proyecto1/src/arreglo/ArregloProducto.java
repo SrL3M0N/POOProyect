@@ -26,6 +26,7 @@ public class ArregloProducto {
 	public Producto Obtener(int x) {
 		return product.get(x);
 	}
+	//Método buscar 
 	public Producto Buscar(int cod) {
 		for (int i = 0; i <Tamaño(); i++) {
 			if(Obtener(i).getCodigo()==cod)return Obtener(i);
