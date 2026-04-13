@@ -135,7 +135,7 @@ public class v1 extends JFrame implements ActionListener {
 			bt_eliminar.setBounds(201, 94, 84, 20);
 			contentPane.add(bt_eliminar);
 		}
-		
+		// Boton adicionar
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
