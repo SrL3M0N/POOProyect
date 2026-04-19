@@ -8,6 +8,7 @@ import clase.Producto;
 public class ArregloProducto {
 	
 	private ArrayList<Producto> product;
+	private ArrayList<Producto> list;
 	
 	//Metodo Constructor ArregloProducto 
 	public ArregloProducto() {
@@ -33,6 +34,16 @@ public class ArregloProducto {
 		}
 		return null;
 	}
+	
+	public void Eliminar(int codigo) {
+	    for (int i = 0; i < Tamaño(); i++) {
+	        if (Obtener(i).getCodigo() == codigo) {
+	            product.remove(i);
+	            return;
+	        }
+	    }
+	}
+
 	
 
 }

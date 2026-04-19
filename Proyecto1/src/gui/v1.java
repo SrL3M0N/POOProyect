@@ -130,7 +130,33 @@ public class v1 extends JFrame implements ActionListener {
 			bt_eliminar = new JButton("Eliminar");
 			bt_eliminar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-				}
+					 if (txtcod.getText().isEmpty()) {
+				            Mensaje("Ingrese un código");
+				            return;
+				        }
+
+				        int codigo = LeerCodigo();
+				        Producto p = ap.Buscar(codigo);
+
+				        if (p != null) {
+				            ap.Eliminar(codigo);
+				            Mensaje("Producto eliminado correctamente");
+
+				            // Limpiar campos
+				            txtcod.setText("");
+				            txtNomb.setText("");
+				            txtPrecio.setText("");
+				            txtStock.setText("");
+
+				            // Actualizar listado
+				            txtS.setText("");
+				            Listado();
+
+				        } else {
+				            Mensaje("El código no existe");
+				        }
+				    }
+				
 			});
 			bt_eliminar.setBounds(201, 94, 84, 20);
 			contentPane.add(bt_eliminar);
@@ -230,4 +256,5 @@ public class v1 extends JFrame implements ActionListener {
 			p.setStock(LeerStock());
 		}else Mensaje ("El código no existe");
 	}
+	
 } 
