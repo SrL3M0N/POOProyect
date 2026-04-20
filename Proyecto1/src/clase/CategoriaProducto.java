@@ -30,6 +30,8 @@ public class CategoriaProducto {
 		this.estado = estado;
 	}
 	
+	
+	
 
 
 	

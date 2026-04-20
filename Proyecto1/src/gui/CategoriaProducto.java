@@ -22,7 +22,8 @@ public class CategoriaProducto extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtnombCatagoria;
 	private JTextArea txtS;
-
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -94,7 +95,7 @@ public class CategoriaProducto extends JFrame {
 				else Mensaje("El código no existe");
 			}
 		});
-		btnModificar.setBounds(297, 96, 89, 23);
+		btnModificar.setBounds(310, 96, 89, 23);
 		contentPane.add(btnModificar);
 		
 		txtcodCategoria = new JTextField();
@@ -141,8 +142,38 @@ public class CategoriaProducto extends JFrame {
 		        }
 		    }
 		});
-		btnNewButton_1.setBounds(165, 99, 84, 20);
+		btnNewButton_1.setBounds(216, 99, 84, 20);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btEliminar = new JButton("Eliminar");
+		btEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+
+				        if (txtcodCategoria.getText().isEmpty()) {
+				            Mensaje("Ingrese un código");
+				            return;
+				        }
+
+				        int codigo = LeerCodigo();
+
+				        clase.CategoriaProducto c = cp.Buscar(codigo);
+
+				        if (c != null) {
+				            cp.Eliminar(codigo);
+				            Mensaje("Eliminado correctamente");
+				        } else {
+				            Mensaje("El código no existe");
+				        }
+
+				    }
+				});
+			
+		
+
+				
+		btEliminar.setBounds(119, 99, 84, 20);
+		contentPane.add(btEliminar);
 		Listado();
 	}
 	
