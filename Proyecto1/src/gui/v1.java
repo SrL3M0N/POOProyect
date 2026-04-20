@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class v1 extends JFrame implements ActionListener {
 
@@ -54,7 +55,7 @@ public class v1 extends JFrame implements ActionListener {
 	 */
 	public v1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 484, 300);
+		setBounds(100, 100, 529, 321);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -124,7 +125,7 @@ public class v1 extends JFrame implements ActionListener {
 				txtcod.setText("");
 			}
 		});
-		bt_limpiar.setBounds(351, 26, 75, 20);
+		bt_limpiar.setBounds(374, 26, 75, 20);
 		contentPane.add(bt_limpiar);
 		{
 			bt_eliminar = new JButton("Eliminar");
@@ -260,5 +261,4 @@ public class v1 extends JFrame implements ActionListener {
 		}
 		else Mensaje ("El código no existe");
 	}
-	
 } 

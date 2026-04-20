@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import arreglo.ArregloCategoriaProducto;
+import clase.Producto;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -93,7 +94,7 @@ public class CategoriaProducto extends JFrame {
 				else Mensaje("El código no existe");
 			}
 		});
-		btnModificar.setBounds(178, 95, 89, 23);
+		btnModificar.setBounds(297, 96, 89, 23);
 		contentPane.add(btnModificar);
 		
 		txtcodCategoria = new JTextField();
@@ -104,11 +105,51 @@ public class CategoriaProducto extends JFrame {
 		JLabel lblCodigo = new JLabel("Codigo");
 		lblCodigo.setBounds(28, 28, 67, 14);
 		contentPane.add(lblCodigo);
+		
+		JButton btnNewButton = new JButton("Reportar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtS.setText("");
+				Listado();
+			}
+		});
+		btnNewButton.setBounds(28, 99, 84, 20);
+		contentPane.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("Adicionar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {							
+				try {
+		            // Validación básica
+		            if (txtcodCategoria.getText().isEmpty() || txtnombCatagoria.getText().isEmpty()) {
+		                Mensaje("Completa todos los campos");
+		                return;
+		            }
+		            // Evitar duplicados
+		            if (cp.Buscar(LeerCodigo()) != null) {
+		                Mensaje("El código ya existe");
+		                return;
+		            }
+		            // Crear objeto correcto
+		            clase.CategoriaProducto C = new clase.CategoriaProducto(LeerCodigo(),LeerNombre(),LeerEstado());
+		            // Agregar
+		            cp.Adicionar(C);		                       
+		            Mensaje("Registro agregado correctamente");
+
+		        } catch (Exception ex) {
+		            Mensaje("Error: datos inválidos");
+		        }
+		    }
+		});
+		btnNewButton_1.setBounds(165, 99, 84, 20);
+		contentPane.add(btnNewButton_1);
 		Listado();
 	}
+	
 	ArregloCategoriaProducto cp = new ArregloCategoriaProducto();
 	private JTextField txtcodCategoria;
 	private JComboBox cboEstado;
+	private JButton btnNewButton_1;
 	
 	void Mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
@@ -141,5 +182,4 @@ public class CategoriaProducto extends JFrame {
 	    // getSelectedIndex() devuelve 0 para la primera opción, 1 para la segunda, etc.
 	    return cboEstado.getSelectedIndex(); 
 	}
-	
 }
