@@ -246,7 +246,7 @@ public class v1 extends JFrame implements ActionListener {
 			return Integer.parseInt(txtStock.getText());		
 		}
 		
-	//Modificar	
+	//boton Modificar	
 		
 	protected void do_btnModificar_actionPerformed(ActionEvent e) {
 		Producto p=ap.Buscar(LeerCodigo());
@@ -254,7 +254,11 @@ public class v1 extends JFrame implements ActionListener {
 			p.setNombre(LeerNombre());
 			p.setPrecio(LeerPrecio());
 			p.setStock(LeerStock());
-		}else Mensaje ("El código no existe");
+			txtS.setText(""); 
+			Listado();
+	        Mensaje("Registro modificado correctamente");
+		}
+		else Mensaje ("El código no existe");
 	}
 	
 } 
