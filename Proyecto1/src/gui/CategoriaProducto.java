@@ -146,6 +146,7 @@ public class CategoriaProducto extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btEliminar = new JButton("Eliminar");
+		//Implentacion de excepciones
 		btEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -155,7 +156,7 @@ public class CategoriaProducto extends JFrame {
 		                return;
 		            }
 
-		            int codigo = LeerCodigo(); // posible error aquí
+		            int codigo = LeerCodigo(); 
 
 		            clase.CategoriaProducto c = cp.Buscar(codigo);
 
