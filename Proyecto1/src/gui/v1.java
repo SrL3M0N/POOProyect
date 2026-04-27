@@ -166,10 +166,14 @@ public class v1 extends JFrame implements ActionListener {
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
 				Producto p = new Producto(LeerCodigo(),LeerNombre(),LeerPrecio(),LeerStock());
-				ap.Adicionar(p);		
+				ap.Adicionar(p);	
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Complete todos los campos correctamente");
 			}
+			}
+			
 		});
 		btnAdicionar.setBounds(114, 94, 84, 20);
 		contentPane.add(btnAdicionar);
@@ -178,6 +182,7 @@ public class v1 extends JFrame implements ActionListener {
 		JButton btnNewButton_1 = new JButton("Buscar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			try {
 				txtS.setText("");		
 				Producto pr= ap.Buscar(Integer.parseInt(txtcod.getText()));
 				if(pr!=null) {
@@ -188,6 +193,9 @@ public class v1 extends JFrame implements ActionListener {
 				else {
 					JOptionPane.showMessageDialog(null,"No existe código");
 				}
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, "Completa los campos ");
+			}
 			}
 		});
 		btnNewButton_1.setBounds(288, 94, 84, 20);
