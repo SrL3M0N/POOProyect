@@ -131,6 +131,8 @@ public class v1 extends JFrame implements ActionListener {
 			bt_eliminar = new JButton("Eliminar");
 			bt_eliminar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					//control de errores:
+					try {
 					 if (txtcod.getText().isEmpty()) {
 				            Mensaje("Ingrese un código");
 				            return;
@@ -156,7 +158,10 @@ public class v1 extends JFrame implements ActionListener {
 				        } else {
 				            Mensaje("El código no existe");
 				        }
-				    }
+					}catch (Exception exception) {
+						JOptionPane.showMessageDialog(null, "Digite un codigo valido");
+					}
+					}
 				
 			});
 			bt_eliminar.setBounds(201, 94, 84, 20);
