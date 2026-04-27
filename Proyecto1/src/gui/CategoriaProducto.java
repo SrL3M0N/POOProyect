@@ -149,25 +149,30 @@ public class CategoriaProducto extends JFrame {
 		btEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+		        try {
+		            if (txtcodCategoria.getText().isEmpty()) {
+		                Mensaje("Ingrese un código");
+		                return;
+		            }
 
-				        if (txtcodCategoria.getText().isEmpty()) {
-				            Mensaje("Ingrese un código");
-				            return;
-				        }
+		            int codigo = LeerCodigo(); // posible error aquí
 
-				        int codigo = LeerCodigo();
+		            clase.CategoriaProducto c = cp.Buscar(codigo);
 
-				        clase.CategoriaProducto c = cp.Buscar(codigo);
+		            if (c != null) {
+		                cp.Eliminar(codigo);
+		                Mensaje("Eliminado correctamente");
+		            } else {
+		                Mensaje("El código no existe");
+		            }
 
-				        if (c != null) {
-				            cp.Eliminar(codigo);
-				            Mensaje("Eliminado correctamente");
-				        } else {
-				            Mensaje("El código no existe");
-				        }
-
-				    }
-				});
+		        } catch (NumberFormatException ex) {
+		            Mensaje("Ingrese un código numérico válido");
+		        } catch (Exception ex) {
+		            Mensaje("Ocurrió un error: " + ex.getMessage());
+		        }	   
+			  }	
+			});
 			
 		
 
