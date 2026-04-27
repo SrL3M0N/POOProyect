@@ -263,15 +263,19 @@ public class v1 extends JFrame implements ActionListener {
 	//boton Modificar	
 		
 	protected void do_btnModificar_actionPerformed(ActionEvent e) {
-		Producto p=ap.Buscar(LeerCodigo());
-		if(p!=null) {
-			p.setNombre(LeerNombre());
-			p.setPrecio(LeerPrecio());
-			p.setStock(LeerStock());
-			txtS.setText(""); 
-			Listado();
-	        Mensaje("Registro modificado correctamente");
+		try {
+			Producto p=ap.Buscar(LeerCodigo());
+			if(p!=null) {
+				p.setNombre(LeerNombre());
+				p.setPrecio(LeerPrecio());
+				p.setStock(LeerStock());
+				txtS.setText(""); 
+				Listado();
+		        Mensaje("Registro modificado correctamente");
+			}
+			else Mensaje ("El código no existe");
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, "Completa los campos ");
 		}
-		else Mensaje ("El código no existe");
-	}
-} 
+	} 
+}
